@@ -34,7 +34,7 @@ public class SecurityConfig {
                                 "/swagger-ui/**",
                                 "/auth/register",
                                 "/auth/login"
-                        ).permitAll()
+                                ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
