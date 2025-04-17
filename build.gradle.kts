@@ -2,6 +2,7 @@ plugins {
 	java
 	id("org.springframework.boot") version "3.2.4"
 	id("io.spring.dependency-management") version "1.1.7"
+	id("application")
 }
 
 group = "dev.bicutoru"
@@ -17,6 +18,14 @@ configurations {
 	compileOnly {
 		extendsFrom(configurations.annotationProcessor.get())
 	}
+}
+
+application {
+	mainClass.set("dev.bicutoru.Application")
+}
+
+tasks.bootJar {
+	archiveFileName.set("app.jar")
 }
 
 repositories {
@@ -41,7 +50,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	testImplementation("org.springframework.security:spring-security-test")
 
-	//JWT
+	// JWT
 	implementation("com.auth0:java-jwt:4.5.0")
 
 	// JPA
