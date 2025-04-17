@@ -10,26 +10,26 @@ version = "0.0.1-SNAPSHOT"
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion.set(JavaLanguageVersion.of(21))
 	}
+}
+
+application {
+	mainClass.set("dev.bicutoru.fintrack.FinTrackApplication")
+}
+
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+	archiveFileName.set("app.jar")
+}
+
+repositories {
+	mavenCentral()
 }
 
 configurations {
 	compileOnly {
 		extendsFrom(configurations.annotationProcessor.get())
 	}
-}
-
-application {
-	mainClass.set("dev.bicutoru.Application")
-}
-
-tasks.bootJar {
-	archiveFileName.set("app.jar")
-}
-
-repositories {
-	mavenCentral()
 }
 
 dependencies {
